@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js example</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="../p5.min.js"></script>
+    <script src="../addons/p5.dom.min.js"></script>
+    <script src="../addons/p5.sound.min.js"></script>
+    <script src="index.js"></script>
+	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded",function (){
+		var button = document.getElementById("random");
+		var text = document.getElementById("sentence");
+		button.addEventListener("click", function () {
+			var noun = nouns[Math.floor(Math.random()*nouns.length)];
+			var adjective = adjectives[Math.floor(Math.random()*adjectives.length)];
+			var verb = verbs[Math.floor(Math.random()*verbs.length)];
+			var adverb = adverbs[Math.floor(Math.random()*adverbs.length)];
+			text.innerHTML="The "+adjective+" "+noun+" "+verb+" "+adverb;
+		
+		});
+		
+		var addAdj = document.getElementById("addAdj");
+		var adjList = document.getElementById("adjective");
+		addAdj.addEventListener("click",function () {
+			var longStr = adjList.value;
+			adjectives.push(longStr.split(' '));
+ 
+		});
+		
+		var nounList = document.getElementById("noun");
+		var addNoun = document.getElementById("addNoun");
+		addNoun.addEventListener("click",function () {
+			var longStr = nounList.value;
+			nouns.push(longStr.split(' '));
+
+		});
+		
+		var verbList = document.getElementById("verb");
+		var addVerb = document.getElementById("addVerb");
+		addVerb.addEventListener("click",function () {
+			var longStr = verbList.value;
+			verbs.push(longStr.split(' '));
+
+		});
+		
+		var advList = document.getElementById("adverb");
+		var addAdv = document.getElementById("addAdv");
+		addAdv.addEventListener("click",function () {
+			var longStr = advList.value;
+			adverbs.push(longStr.split(' '));
+
+		});
+	});
+	</script>
+  </head>
+  <body>
+  
+  <textarea name="textarea" id="adjective" rows="5" cols="30">Adjectives
+  	</textarea>
+  	<div></div>
+  	<button id="addAdj">Add adjectives</button>
+  	<div></div>
+  	<textarea name="textarea" id="noun" rows="5" cols="30">Nouns
+  	</textarea>
+  	<div></div>
+  	<button id="addNoun">Add nouns</button>
+  	<div></div>
+  	<textarea name="textarea" id="verb" rows="5" cols="30">Verbs
+  	</textarea>
+  	<div></div>
+  	<button id="addVerb">Add verbs</button>
+  	<div></div>
+  	<textarea name="textarea" id="adverb" rows="5" cols="30">Adverbs
+  	</textarea>
+  	<div></div>
+  	<button id="addAdv">Add adverbs</button>
+  	<div></div>
+  <button id="random">Generate Sentence</button>
+  <div id="sentence" class="para"></div>
+  </body>
+</html>
